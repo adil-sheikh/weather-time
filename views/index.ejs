@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+
+<h1>WeatherTime</h1>
+
+<% if(!locals.temperature) { %>
+<form method="POST" action="/">
+    <label class="form-text" for="latitude">LATITUDE</label><br>
+    <input name="latitude" type="text" required><br>
+    <label class="form-text" for="longitude">LONGITUDE</label><br>
+    <input name="longitude" type="text" required><br>
+    <input type="submit" value="Go">
+</form>
+<% } else { %>
+<div class="container">
+    <h2><%= temperature %> °C</h2>
+    <div class="secondary"><h3>Wind<br><%= wind %> km/h</h3></div>
+    <div class="secondary"><h3>Humidity<br><%= humidity %> %</h3></div>
+    <h2><%= weatherType %></h2>
+    <div class="secondary"><h3>Feels like<br><%= feelsLike %> °C</h3></div>
+    <div class="secondary"><h3>Visibility<br><%= visibility %> km</h3></div>
+</div>
+<form action="/" method="GET">
+    <input id="go-back" type="submit" value="Go Back">
+</form>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
